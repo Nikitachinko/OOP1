@@ -1,4 +1,7 @@
 package Transport;
+import java.util.List;
+
+
 
 public class Bus extends Transport<DriverD>{
 
@@ -36,8 +39,8 @@ public class Bus extends Transport<DriverD>{
     }
 
 
-    public Bus(String brand, String model, int year, double engineVolume, DriverD driver,  CapacityType capacityType, Type type) {
-        super(brand, model, year, engineVolume, driver, type);
+    public Bus(String brand, String model,  double engineVolume, DriverD driver,  CapacityType capacityType, Type type,List<Mechanic> mechanics) {
+        super(brand, model,  engineVolume, driver, type,mechanics);
         this.capacityType = capacityType;
     }
 
@@ -61,8 +64,9 @@ public class Bus extends Transport<DriverD>{
         System.out.println("Автобус марки " + getBrand() + " закончил движение ");
     }
     @Override
-    public void diagnostic() throws TransportTypeException {
+    public boolean diagnostic() throws TransportTypeException {
     throw new TransportTypeException("Автобусы диагностику не проходят");
+
     }
 
     @Override

@@ -6,6 +6,10 @@ public class DriverB extends Driver{
                    int experienceInYears) {
         super(name, hasDriverLicense, experienceInYears);
     }
+    @Override
+    public String toString() {
+        return super.toString() + ", водитель категории B";
+    }
 
     @Override
     public void startMove() {

@@ -7,6 +7,10 @@ public class DriverD extends Driver{
         super(name, hasDriverLicense, experienceInYears);
     }
     @Override
+    public String toString() {
+        return super.toString() + ", водитель категории D";
+    }
+    @Override
     public void startMove() {
         System.out.println(" Водитель категории D " + getName() + " начал движение");
     }
