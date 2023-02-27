@@ -1,6 +1,7 @@
 package Transport;
 import java.util.List;
-
+import java.util.Objects;
+import java.util.Set;
 
 public class Car extends Transport<DriverB> {
 
@@ -59,6 +60,18 @@ public class Car extends Transport<DriverB> {
         System.out.println("Пройти диагностику легкового автомобиля");
         return true;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return bodyType == car.bodyType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bodyType);
+    }
 
     @Override
     public void printType() {
@@ -85,5 +98,28 @@ public class Car extends Transport<DriverB> {
         int maxBound = 160;
         int maxSpeed = (int) (minBound + (maxBound - minBound) + Math.random());
         System.out.println("Максимальная скорость для автомобиля " + maxSpeed);
+    }
+    public static class Key {
+        private final boolean remoteEngineStarYes;
+        private final boolean keylessEntryYes;
+
+        public Key(boolean remoteEngineStarYes, boolean keylessEntryYes) {
+            this.remoteEngineStarYes = remoteEngineStarYes;
+            this.keylessEntryYes = keylessEntryYes;
+        }
+
+        public boolean isRemoteEngineStarYes() {
+            return remoteEngineStarYes;
+        }
+
+        public boolean isKeylessEntryYes() {
+            return keylessEntryYes;
+        }
+
+        @Override
+        public String toString() {
+            return (remoteEngineStarYes ? " удаленный запуск двигателя есть, " : " удаленного запуска двигателя нет, ") +
+                    (keylessEntryYes ? " бесключевой доступ есть " : " бесключевого доступа нет");
+        }
     }
 }

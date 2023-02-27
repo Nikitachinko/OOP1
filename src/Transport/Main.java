@@ -66,7 +66,14 @@ public class Main {
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
+        Map<Car, List<Mechanic>> hashMap = new HashMap<>();
+        hashMap.put(car1,mechanics);
+        hashMap.put(new Car("Lada", "Granta", 2,new DriverB("Ivan Ivanov", true,5), Car.BodyType.SUV, Type.CAR, mechanics), mechanics);
+        hashMap.put(new Car("Lada", "Granta", 2,new DriverB("Ivan Ivanov", true,5), Car.BodyType.SUV, Type.CAR, mechanics), mechanics);
 
+        for (Map.Entry<Car, List<Mechanic>> b : hashMap.entrySet()) {
+            System.out.println("Транспорт " + b.getKey() + " , механики " + b.getValue());
+        };
 
 
     }
