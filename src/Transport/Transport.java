@@ -18,13 +18,9 @@ public abstract class Transport<T extends Driver> implements Competing{
 
 
     public Transport(String brand, String model,  double engineVolume, T driver,Type type,List<Mechanic> mechanics) {
-//        if (brand == null || brand.isEmpty()) {
-//            brand = "defoult";
-//        }
+
         this.brand = brand;
-//        if (model == null || model.isEmpty()) {
-//            model = "defoult";
-//        }
+
         this.model = model;
 this.driver=driver;
 this.engineVolume=engineVolume;
@@ -55,9 +51,7 @@ this.engineVolume=engineVolume;
     }
 
     public void setEngineVolume(double engineVolume) {
-//        if(engineVolume<=0){
-//            engineVolume=1.6;
-//        }
+
         this.engineVolume = engineVolume;
     }
 

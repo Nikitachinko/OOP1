@@ -2,32 +2,35 @@ package Transport;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ServiceStation <T extends Transport> {
-    private final Queue<T> queue;
 
-    public ServiceStation() {
-        queue = new LinkedList<>();
+public class ServiceStation  {
+private Transport transport;
+    private  Queue<Transport> queue = new LinkedList<>();
+
+    public ServiceStation(){
+
+    }
+    public Queue<Transport>getQueue(){
+        return queue;
     }
 
-    public void addToQueue(T transport) throws TransportTypeException {
-        if(transport==null){
-            System.out.println("Error! Transport is NULL");
-            return;
+    public void addToQueue(Transport transport) throws TransportTypeException {
+        if (transport.diagnostic()) {
+            queue.offer(transport);
+            System.out.println(transport.getBrand() + " " + transport.getModel() + " успешно добавлен в очередь на обслуживание");
+        } else {
+            System.out.println("Автобус" + transport.getBrand() + "" + transport.getModel() + "не нуждается в техобслуживании перед заездом");
         }
-        if(transport.diagnostic()) {
-            if (queue.offer(transport))
-                System.out.println(transport.getBrand() + " " + transport.getModel() + " успешно добавлен в очередь на обслуживание");
-            else
-                System.out.println("что-то пошло не так с " + transport.getModel() + " " + transport.getModel());
-        } else
-            System.out.println("Автобусы диагностику не проходят! " + transport.getBrand() + " " + transport.getModel());
     }
+      public void carryOutATechnicallnspecion(){
+          System.out.println("Транспорт"+queue.poll()+"Успешно прошел техобслуживание");
+      }
 
     public void makeDiagnostic() {
-        T transport = queue.poll();
+        Transport transport = queue.poll();
         if (transport != null) {
             System.out.println(transport.getBrand() + " " + transport.getModel() + " успешно прошел облуживание");
-        }else
+        } else
             System.out.println("Очередь на облуживание пуста");
     }
 
@@ -36,11 +39,11 @@ public class ServiceStation <T extends Transport> {
         StringBuilder totalTransports = new StringBuilder();
         int count = 0;
         if (queue.peek() != null) {
-            for (Transport ts: queue) {
+            for (Transport ts : queue) {
                 totalTransports.append(" #").append(++count).append(": ").append(ts.getBrand()).append(" ").append(ts.getModel()).append(" ");
             }
         }
-        if(count==0)
+        if (count == 0)
             return "'Очередь на обслуживиние пуста'";
         return totalTransports.toString();
     }

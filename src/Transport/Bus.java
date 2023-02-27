@@ -2,22 +2,21 @@ package Transport;
 import java.util.List;
 
 
-
-public class Bus extends Transport<DriverD>{
+public class Bus extends Transport<DriverD> {
 
     private final CapacityType capacityType;
 
-    enum CapacityType{
-        EXTRA_SMALL (null,10),
-        SMALL (null,25),
-        MEDIUM (25,50),
-        LARGE (50,80),
-        ESPECIALLY_LARGE(80,120);
+    enum CapacityType {
+        EXTRA_SMALL(null, 10),
+        SMALL(null, 25),
+        MEDIUM(25, 50),
+        LARGE(50, 80),
+        ESPECIALLY_LARGE(80, 120);
 
         private final Integer lowerLimitsOfCapacity;
         private final Integer upperLimitsOfCapacity;
 
-        CapacityType(Integer lowerLimitsOfCapacity, Integer upperLimitsOfCapacity){
+        CapacityType(Integer lowerLimitsOfCapacity, Integer upperLimitsOfCapacity) {
             this.lowerLimitsOfCapacity = lowerLimitsOfCapacity;
             this.upperLimitsOfCapacity = upperLimitsOfCapacity;
         }
@@ -39,8 +38,8 @@ public class Bus extends Transport<DriverD>{
     }
 
 
-    public Bus(String brand, String model,  double engineVolume, DriverD driver,  CapacityType capacityType, Type type,List<Mechanic> mechanics) {
-        super(brand, model,  engineVolume, driver, type,mechanics);
+    public Bus(String brand, String model, double engineVolume, DriverD driver, CapacityType capacityType, Type type, List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, type, mechanics);
         this.capacityType = capacityType;
     }
 
@@ -50,8 +49,8 @@ public class Bus extends Transport<DriverD>{
 
     @Override
     public String toString() {
-        return  capacityType + " " +
-                  super.toString();
+        return capacityType + " " +
+                super.toString();
     }
 
     @Override
@@ -63,9 +62,10 @@ public class Bus extends Transport<DriverD>{
     public void finishMove() {
         System.out.println("Автобус марки " + getBrand() + " закончил движение ");
     }
+
     @Override
     public boolean diagnostic() throws TransportTypeException {
-    throw new TransportTypeException("Автобусы диагностику не проходят");
+        throw new TransportTypeException("Автобусы диагностику не проходят");
 
     }
 

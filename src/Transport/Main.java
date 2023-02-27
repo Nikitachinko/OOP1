@@ -41,7 +41,7 @@ public class Main {
         truck1.nameDriverTransport();
 
 
-        ServiceStation<Transport<?>> serviceStation = new ServiceStation<>();
+        ServiceStation  serviceStation = new ServiceStation();
         for(Transport<?> ts: participatingCar) {
             try {
                 serviceStation.addToQueue(ts);
